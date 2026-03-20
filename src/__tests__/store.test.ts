@@ -1,6 +1,6 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
-import { createStore, batch, computed } from '../dist/index.js';
+import { createStore, batch, computed } from '../../dist/index.js';
 
 describe('createStore', () => {
   it('should return the initial value', () => {
