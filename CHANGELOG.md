@@ -1,14 +1,14 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+## 0.1.2
+
+- Standardize README and CHANGELOG formatting
 
 ## 0.1.1
 
 - Add CI workflow and badges to README
 
-## [0.1.0] - 2026-03-20
-
-### Added
+## 0.1.0
 
 - `createStore(initial)` — reactive store with `get`, `set`, `update`, and `subscribe`
 - `computed(stores, fn)` — derived read-only store that recomputes when sources change

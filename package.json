@@ -1,6 +1,6 @@
 {
   "name": "@philiprehberger/tiny-store",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Reactive state container in under 1KB — framework agnostic",
   "type": "module",
   "main": "./dist/index.cjs",

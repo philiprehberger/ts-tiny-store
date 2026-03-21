@@ -6,10 +6,6 @@
 
 Reactive state container in under 1KB — framework agnostic
 
-## Requirements
-
-- Node.js >= 18
-
 ## Installation
 
 ```bash
@@ -18,7 +14,7 @@ npm install @philiprehberger/tiny-store
 
 ## Usage
 
-```typescript
+```ts
 import { createStore, computed, batch } from '@philiprehberger/tiny-store';
 
 // Create a store
