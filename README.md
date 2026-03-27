@@ -3,6 +3,7 @@
 [![CI](https://github.com/philiprehberger/ts-tiny-store/actions/workflows/ci.yml/badge.svg)](https://github.com/philiprehberger/ts-tiny-store/actions/workflows/ci.yml)
 [![npm version](https://img.shields.io/npm/v/@philiprehberger/tiny-store.svg)](https://www.npmjs.com/package/@philiprehberger/tiny-store)
 [![License](https://img.shields.io/github/license/philiprehberger/ts-tiny-store)](LICENSE)
+[![Sponsor](https://img.shields.io/badge/sponsor-GitHub%20Sponsors-ec6cb9)](https://github.com/sponsors/philiprehberger)
 
 Reactive state container in under 1KB — framework agnostic
 
