@@ -1,9 +1,8 @@
 # @philiprehberger/tiny-store
 
-[![CI](https://github.com/philiprehberger/ts-tiny-store/actions/workflows/ci.yml/badge.svg)](https://github.com/philiprehberger/ts-tiny-store/actions/workflows/ci.yml)
+[![CI](https://github.com/philiprehberger/tiny-store/actions/workflows/ci.yml/badge.svg)](https://github.com/philiprehberger/tiny-store/actions/workflows/ci.yml)
 [![npm version](https://img.shields.io/npm/v/@philiprehberger/tiny-store.svg)](https://www.npmjs.com/package/@philiprehberger/tiny-store)
-[![License](https://img.shields.io/github/license/philiprehberger/ts-tiny-store)](LICENSE)
-[![Sponsor](https://img.shields.io/badge/sponsor-GitHub%20Sponsors-ec6cb9)](https://github.com/sponsors/philiprehberger)
+[![Last updated](https://img.shields.io/github/last-commit/philiprehberger/tiny-store)](https://github.com/philiprehberger/tiny-store/commits/main)
 
 Reactive state container in under 1KB — framework agnostic
 
@@ -73,6 +72,24 @@ npm run typecheck
 npm test
 ```
 
+## Support
+
+If you find this project useful:
+
+⭐ [Star the repo](https://github.com/philiprehberger/tiny-store)
+
+🐛 [Report issues](https://github.com/philiprehberger/tiny-store/issues?q=is%3Aissue+is%3Aopen+label%3Abug)
+
+💡 [Suggest features](https://github.com/philiprehberger/tiny-store/issues?q=is%3Aissue+is%3Aopen+label%3Aenhancement)
+
+❤️ [Sponsor development](https://github.com/sponsors/philiprehberger)
+
+🌐 [All Open Source Projects](https://philiprehberger.com/open-source-packages)
+
+💻 [GitHub Profile](https://github.com/philiprehberger)
+
+🔗 [LinkedIn Profile](https://www.linkedin.com/in/philiprehberger)
+
 ## License
 
-MIT
+[MIT](LICENSE)
