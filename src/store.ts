@@ -9,6 +9,18 @@ export type Listener<T> = (value: T, previous: T) => void;
 export type Unsubscribe = () => void;
 
 /**
+ * Options accepted by `createStore`.
+ */
+export interface StoreOptions<T> {
+  /**
+   * Custom equality function used to decide whether subscribers should be
+   * notified after a `set` or `update` call. Defaults to `Object.is`.
+   * Subscribers are only notified when this function returns `false`.
+   */
+  equals?: (a: T, b: T) => boolean;
+}
+
+/**
  * A reactive store that holds a single value of type `T`.
  */
 export interface Store<T> {
@@ -37,11 +49,13 @@ const pendingFlushes: Array<() => void> = [];
  * Create a reactive store with an initial value.
  *
  * @param initial - The starting value for the store.
+ * @param options - Optional configuration, including a custom `equals` function.
  * @returns A `Store<T>` instance.
  */
-export function createStore<T>(initial: T): Store<T> {
+export function createStore<T>(initial: T, options?: StoreOptions<T>): Store<T> {
   let value = initial;
   const listeners = new Set<Listener<T>>();
+  const equals = options?.equals ?? Object.is;
 
   function notify(previous: T): void {
     for (const listener of listeners) {
@@ -55,7 +69,7 @@ export function createStore<T>(initial: T): Store<T> {
     },
 
     set(next: T) {
-      if (Object.is(value, next)) return;
+      if (equals(value, next)) return;
       const previous = value;
       value = next;
 

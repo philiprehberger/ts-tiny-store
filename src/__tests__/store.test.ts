@@ -74,6 +74,37 @@ describe('createStore', () => {
     store.set(obj2);
     assert.equal(calls.length, 1);
   });
+
+  it('should notify on each set with default equality even when object contents match', () => {
+    const store = createStore<{ a: number }>({ a: 1 });
+    const calls: Array<{ a: number }> = [];
+    store.subscribe((v) => calls.push(v));
+    store.set({ a: 1 });
+    store.set({ a: 1 });
+    assert.equal(calls.length, 2);
+  });
+
+  it('should use custom equals to skip notifications when values are considered equal', () => {
+    const store = createStore({ a: 1 }, { equals: (x, y) => x.a === y.a });
+    const calls: Array<{ a: number }> = [];
+    store.subscribe((v) => calls.push(v));
+    store.set({ a: 1 });
+    store.set({ a: 1 });
+    assert.equal(calls.length, 0);
+    store.set({ a: 2 });
+    assert.equal(calls.length, 1);
+  });
+
+  it('should honour custom equals in update()', () => {
+    const store = createStore({ a: 1 }, { equals: (x, y) => x.a === y.a });
+    const calls: Array<{ a: number }> = [];
+    store.subscribe((v) => calls.push(v));
+    store.update((current) => ({ a: current.a }));
+    assert.equal(calls.length, 0);
+    store.update((current) => ({ a: current.a + 1 }));
+    assert.equal(calls.length, 1);
+    assert.equal(calls[0]!.a, 2);
+  });
 });
 
 describe('batch', () => {

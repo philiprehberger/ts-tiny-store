@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.0
+
+- `createStore(initial, { equals })` accepts a custom equality function (defaults to `Object.is`) to control subscriber notifications for object-shaped state
+
 ## 0.1.4
 
 - Fix README GitHub URLs to use correct repo name (ts-tiny-store)

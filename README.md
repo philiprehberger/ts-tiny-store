@@ -4,6 +4,8 @@
 [![npm version](https://img.shields.io/npm/v/@philiprehberger/tiny-store.svg)](https://www.npmjs.com/package/@philiprehberger/tiny-store)
 [![Last updated](https://img.shields.io/github/last-commit/philiprehberger/ts-tiny-store)](https://github.com/philiprehberger/ts-tiny-store/commits/main)
 
+![@philiprehberger/tiny-store](https://raw.githubusercontent.com/philiprehberger/ts-tiny-store/main/package-card.webp)
+
 Reactive state container in under 1KB — framework agnostic
 
 ## Installation
@@ -42,18 +44,42 @@ batch(() => {
 unsubscribe();
 ```
 
+### Custom Equality
+
+By default, subscribers are skipped only when the new value is `Object.is`-equal to the previous one — so two distinct objects with identical shape will both notify. Pass a custom `equals` function (e.g. shallow equality) to control this:
+
+```ts
+import { createStore } from '@philiprehberger/tiny-store';
+
+const user = createStore(
+  { name: 'Jane', age: 30 },
+  { equals: (a, b) => a.name === b.name && a.age === b.age },
+);
+
+user.subscribe((u) => console.log('changed', u));
+
+user.set({ name: 'Jane', age: 30 }); // no notification — shallow equal
+user.set({ name: 'Jane', age: 31 }); // notifies
+```
+
 ## API
 
-### `createStore<T>(initial: T): Store<T>`
+### `createStore<T>(initial: T, options?: StoreOptions<T>): Store<T>`
 
 Create a reactive store with an initial value.
 
 | Method | Description |
 | --- | --- |
 | `get()` | Return the current value |
-| `set(value)` | Replace the value and notify subscribers (skipped if `Object.is` equal) |
+| `set(value)` | Replace the value and notify subscribers (skipped if the equality function returns `true`) |
 | `update(fn)` | Update via callback: `store.update(n => n + 1)` |
 | `subscribe(listener)` | Register a `(value, previous) => void` listener; returns an unsubscribe function |
+
+#### `StoreOptions<T>`
+
+| Option | Type | Description |
+| --- | --- | --- |
+| `equals` | `(a: T, b: T) => boolean` | Custom equality function used to decide whether subscribers are notified after `set` / `update`. Defaults to `Object.is`. Subscribers fire only when this returns `false`. |
 
 ### `computed<T>(stores, fn): ComputedStore<T>`
 
